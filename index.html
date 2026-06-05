@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archivo Interceptado</title>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00ff66;
+  font-family: monospace;
+  overflow: hidden;
+}
+#terminal {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  padding: 24px;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  font-size: 24px;
+  line-height: 1.45;
+}
+.cursor {
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+<div id="terminal"></div>
+<script>
+const texto = `
+╔═════════════════════════════════════════════════════════╗',
+' ARCHIVO INTERCEPTADO',
+' registro: 04',
+' asunto: archivos de la misión gusano rojo',
+' fecha de emisión estimada: 17 de marzo, 2027',
+' ubicación aproximada: '20° 13´19.82´´N / 99°18´30.14´´O'',
+' estado de señal: parcial',
+'╚═════════════════════════════════════════════════════════╝'
+];
+
+[INICIO DEL MENSAJE]
+
+A veces quiero regresar.
+Es complicado encontrar lugares 
+desde donde enviarte mensajes.
+Mi cuerpo empieza a resentir los brincos temporales.
+Tengo dolores 
+muy 
+fuertes en la cabeza.
+Y empiezo a olvidar cosas.
+
+He tenido que documentar con una cámara los hallazgos que encuentro.
+
+El artefacto con espinas que encontré 
+es el vestigio 
+de 
+alguna operación militar 
+perdida en el tiempo.
+Pero lo que descubrí es mucho más extraño.
+GUSANO ROJO 
+no es un nombre. 
+ni una persona.
+
+Es una misión.
+Una guerra 
+secreta
+
+que nadie sabe si ya ocurrió
+si está ocurriendo
+o si está por suceder.
+
+Los chinicuiles son agentes secretos.
+Organismos programados.
+Modificados.
+Adaptados
+
+que han estado desapareciendo 
+los garambullos
+y usando su tecnología 
+para viajar en el tiempo.
+
+Llegué en el verano de Tenango en 2027.
+
+Encontré una especie de cuartel secreto 
+escondido en lo profundo del cerro.
+Era una casa abandonada 
+acondicionada como centro de monitoreo.
+
+Observaban el Túnel Emisor Oriente 
+y los vasos reguladores 
+de aguas residuales desde el año 2021.
+
+Un equipo clandestino los vigilaba las 24 horas.
+No por casualidad.
+Sino porque estaban 
+al límite de su capacidad.
+Seguían especialmente 
+los movimientos de los directivos 
+de la CONAGUA.
+
+Pero eso no fue lo único.
+
+El cuartel estaba lleno de armas.
+Pistolas alineadas 
+sobre una mesa metálica.
+Drones de videovigilancia 
+en estado de calibración.
+
+Pequeños robots de búsqueda.
+Y en una esquina un criadero de chinicuiles.
+Estos gusanos parecen criaturas simples, 
+pero su cuerpo es una promesa de algo que todavía no es.
+
+Primero larva.
+Después pupa
+Finalmente polilla.
+
+Los criaban en contenedores ovalados 
+con protuberancias de barro.
+Los magueyes con los que alimentaban 
+a los gusanos habían sido
+modificados genéticamente.
+
+Sobre una mesa estaban armando 
+una bomba de garambullos.
+No era un explosivo común.
+
+La energía que liberaría sería suficiente 
+para fracturar un portal temporal.
+Abrirlo o cerrarlo para siempre
+
+Tuve que salir corriendo.
+Alguien se acercaba.
+Pero no fueron militares ni policías.
+Los que encontraron el cuartel fueron niños.
+
+Jugaban en el cerro con resorteras 
+y bolas de masa robadas a su abuela.
+
+Después llegaron los adultos.
+Luego la policía.
+Cerraron la zona.
+
+Dijeron que era un laboratorio de metanfetaminas abandonado.
+Que no había nada peligroso.
+Pero había demasiado silencio en las voces de los oficiales.
+
+Pude averiguar que se abrió una carpeta de investigación.
+Clasificada como confidencial.
+
+No podía quedarme con la incertidumbre.
+Así que me infiltré a la fiscalía.
+En un disco duro confiscado encontré la confirmación. 
+
+La bomba en los vasos reguladores es real.
+Pero no estaba diseñada para destruir 
+el Túnel Emisor Oriente.
+
+Era lo contrario.
+
+La bomba serviría para abrir un portal 
+en los vasos reguladores
+evitar una inundación de aguas residuales.
+
+No es un ataque terrorista.
+Ni una rebelión.
+
+Es una forma de evitar 
+una inundación con aguas negras
+lo suficientemente grande 
+como para cubrir 
+comunidades enteras.
+
+Y con ello 
+borrar las huellas de experimentos biotecnológicos 
+realizados en la población
+
+¿Quién ha decidido que la historia 
+del Valle debe ser borrada una y otra vez?
+
+Si Gusano Rojo
+fue una misión para evitar la inundación 
+¿fracasó?
+o
+¿está esperando ser activada de nuevo?
+
+Te escribiré cuando tenga más certezas que dudas.
+Si es que el tiempo me deja.
+
+Mis manos dejaron de ser suaves como te gustaban.
+Ahora tienen espinas enterradas.
+
+[FIN DEL MENSAJE]
+..
+...
+.....
+...............
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+estado de señal: activo
+registro archivado
+`;
+const terminal = document.querySelector('#terminal');
+let indice = 0;
+let salida = '';
+let interferenciaMostrada = false;
+const TIEMPO_REINICIO = 300000;
+const corrupciones = {
+  o: '0',
+  O: '0',
+  a: '4',
+  A: '4',
+  e: '3',
+  E: '3',
+  i: '1',
+  I: '1'
+};
+function corromper(letra) {
+  if (
+    corrupciones[letra] &&
+    Math.random() < 0.04
+  ) {
+    return corrupciones[letra];
+  }
+  return letra;
+}
+function reiniciarSistema() {
+  terminal.innerHTML = '';
+  setTimeout(function() {
+    indice = 0;
+    salida = '';
+    interferenciaMostrada = false;
+    escribir();
+  }, 5000);
+}
+function escribir() {
+  if (indice >= texto.length) {
+    terminal.innerHTML = salida;
+    setTimeout(function() {
+      reiniciarSistema();
+    }, TIEMPO_REINICIO);
+    return;
+  }
+  if (
+    !interferenciaMostrada &&
+    indice > texto.length * 0.75
+  ) {
+    interferenciaMostrada = true;
+    terminal.innerHTML =
+      salida +
+      '\n\n[ SEÑAL INESTABLE ]\n';
+    terminal.scrollTop =
+      terminal.scrollHeight;
+    setTimeout(function() {
+      terminal.innerHTML =
+        salida +
+        '\n\n[ RECONECTANDO ]\n';
+      terminal.scrollTop =
+        terminal.scrollHeight;
+      setTimeout(escribir, 2500);
+    }, 1500);
+    return;
+  }
+  salida += corromper(texto[indice]);
+  terminal.innerHTML =
+    salida +
+    '<span class="cursor">█</span>';
+  terminal.scrollTop =
+    terminal.scrollHeight;
+  indice++;
+  let velocidad = 18;
+  if (Math.random() < 0.015) {
+    velocidad = 80;
+  }
+  setTimeout(escribir, velocidad);
+}
+escribir();
+</script>
+</body>
+</html>
